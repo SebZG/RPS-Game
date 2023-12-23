@@ -20,7 +20,7 @@ const RPS = () => {
         alert("You lost!");
         losses++;
       } else if ((rps === "R" && computersChoice === "S") || (rps === "S" && computersChoice === "P") || (rps === "P" && computersChoice === "R")) {
-        alert("You Won!")
+        alert("You Won!");
         wins++;
       } else {
         console.log("Invalid choice");
