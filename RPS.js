@@ -1,13 +1,13 @@
 const RPS = () => {
   const choices = ["R", "P", "S"];
   const play = confirm("Do you want to play?");
-  let rounds = prompt("How many rounds do you want to play?")
   let num = 0;
   let draws = 0;
   let wins = 0;
   let losses = 0;
 
   if (play === true) {
+    let rounds = prompt("How many rounds do you want to play?")
     while (num < rounds) {
       num++;
       let rps = prompt("R, P, S ?");
