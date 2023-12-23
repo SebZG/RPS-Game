@@ -43,6 +43,7 @@ const playRPSGame = () => {
       console.log(`Computer's choice was: ${computerChoice}`);
       determineWinner(userChoice, computerChoice);
     }
+    console.log(`Wins: ${wins}, Losses: ${losses}, Draws: ${draws}`)
     alert(`Wins: ${wins}, Losses: ${losses}, Draws: ${draws}`);
   }
 };
