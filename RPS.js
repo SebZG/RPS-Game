@@ -4,10 +4,8 @@ const playRPSGame = () => {
   let count = 0;
   let [draws, wins, losses] = [0, 0, 0];
 
-  const getRandomChoices = () => {
-    const randomChoice = Math.floor(Math.random() * choices.length);
-    return choices[randomChoice];
-  };
+  const getRandomChoices = () =>
+    choices[Math.floor(Math.random() * choices.length)];
 
   const determineWinner = (userChoice, computerChoice) => {
     if (userChoice === computerChoice) {
