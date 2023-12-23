@@ -1,13 +1,14 @@
 const RPS = () => {
-  let choices = ["R", "P", "S"];
-  let play = confirm("Do you want to play?");
+  const choices = ["R", "P", "S"];
+  const play = confirm("Do you want to play?");
+  let rounds = prompt("How many rounds do you want to play?")
+  let num = 0;
   let draws = 0;
   let wins = 0;
   let losses = 0;
-  let num = 0;
 
   if (play === true) {
-    while (num <= 10) {
+    while (num < rounds) {
       num++;
       let rps = prompt("R, P, S ?");
       let randomChoice = Math.floor(Math.random() * choices.length);
@@ -16,10 +17,14 @@ const RPS = () => {
       console.log("Computer's choice was: " + computersChoice);
       if (rps === computersChoice) {
         draws++;
-      } else if ((rps === "R" && computersChoice === "P") || (rps === "P" && computersChoice === "S") || (rps === "S" && computersChoice === "R")) {
+      } else if ((rps === "R" && computersChoice === "P")
+        || (rps === "P" && computersChoice === "S")
+        || (rps === "S" && computersChoice === "R")) {
         alert("You lost!");
         losses++;
-      } else if ((rps === "R" && computersChoice === "S") || (rps === "S" && computersChoice === "P") || (rps === "P" && computersChoice === "R")) {
+      } else if ((rps === "R" && computersChoice === "S")
+        || (rps === "S" && computersChoice === "P")
+        || (rps === "P" && computersChoice === "R")) {
         alert("You Won!");
         wins++;
       } else {
@@ -27,7 +32,6 @@ const RPS = () => {
       }
     }
     alert(`Wins: ${wins}, Losses: ${losses}, Draws: ${draws}`);
-
   } else {
     alert(":(");
   }
