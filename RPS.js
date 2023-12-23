@@ -2,7 +2,7 @@ const playRPSGame = () => {
   const choices = ["R", "P", "S"];
   const play = confirm("Do you want to play?");
   let count = 0;
-  let [draws, wins, losses] = [0, 0, 0]
+  let [draws, wins, losses] = [0, 0, 0];
 
   const getRandomChoices = () => {
     const randomChoice = Math.floor(Math.random() * choices.length);
@@ -11,20 +11,21 @@ const playRPSGame = () => {
 
   const determineWinner = (userChoice, computerChoice) => {
     if (userChoice === computerChoice) {
+      alert(`Draw!`);
       draws++
     } else if (
       (userChoice === "R" && computerChoice === "P") ||
       (userChoice === "P" && computerChoice === "S") ||
       (userChoice === "S" && computerChoice === "R")
     ) {
-      alert("You lost!");
+      alert(`You lost!`);
       losses++
     } else if (
       (userChoice === "R" && computerChoice === "S") ||
       (userChoice === "S" && computerChoice === "P") ||
       (userChoice === "P" && computerChoice === "R")
     ) {
-      alert("You won!");
+      alert(`You won!`);
       wins++
     } else {
       return false; // Return true to indicate invalid input
