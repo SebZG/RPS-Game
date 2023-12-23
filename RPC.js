@@ -12,6 +12,8 @@ const RPS = () => {
       let rps = prompt("R, P, S ?");
       let randomChoice = Math.floor(Math.random() * choices.length);
       let computersChoice = choices[randomChoice];
+      console.log("Your choice was: " + rps);
+      console.log("Computer's choice was: " + computersChoice);
       if (rps === computersChoice) {
         draws++
       } else if (rps === "R" && computersChoice === "P") {
