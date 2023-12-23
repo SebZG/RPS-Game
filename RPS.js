@@ -1,40 +1,50 @@
-const RPS = () => {
+const playRPSGame = () => {
   const choices = ["R", "P", "S"];
   const play = confirm("Do you want to play?");
+  const rounds = play ? prompt("How many rounds do you want to play?") : 0;
   let count = 0;
   let draws = 0;
   let wins = 0;
   let losses = 0;
 
-  if (play === true) {
-    let rounds = prompt("How many rounds do you want to play?")
+  const getRandomChoices = () => {
+    const randomChoice = Math.floor(Math.random() * choices.length);
+    return choices[randomChoice];
+  }
+
+  const determineWinner = (userChoice, computerChoice) => {
+    if (userChoice === computerChoice) {
+      draws++
+    } else if (
+      (userChoice === "R" && computerChoice === "P") ||
+      (userChoice === "P" && computerChoice === "S") ||
+      (userChoice === "S" && computerChoice === "R")
+    ) {
+      alert("You lost!");
+      losses++
+    } else if (
+      (userChoice === "R" && computerChoice === "S") ||
+      (userChoice === "S" && computerChoice === "P") ||
+      (userChoice === "P" && computerChoice === "R")
+    ) {
+      alert("You won!");
+      wins++
+    } else {
+      console.log("Invalid choice")
+    }
+  }
+
+  if (play) {
     while (count < rounds) {
-      count++;
-      let rps = prompt("R, P, S ?").toUpperCase();
-      let randomChoice = Math.floor(Math.random() * choices.length);
-      let computersChoice = choices[randomChoice];
-      console.log(`Your choice was: ${rps}`);
-      console.log(`Computer's choice was: ${computersChoice}`);
-      if (rps === computersChoice) {
-        draws++;
-      } else if ((rps === "R" && computersChoice === "P")
-        || (rps === "P" && computersChoice === "S")
-        || (rps === "S" && computersChoice === "R")) {
-        alert("You lost!");
-        losses++;
-      } else if ((rps === "R" && computersChoice === "S")
-        || (rps === "S" && computersChoice === "P")
-        || (rps === "P" && computersChoice === "R")) {
-        alert("You Won!");
-        wins++;
-      } else {
-        console.log("Invalid choice");
-      }
+      count++
+      const userChoice = prompt("R, P, S ?").toUpperCase();
+      const computerChoice = getRandomChoices();
+      console.log(`Your choice was: ${userChoice}`);
+      console.log(`Computer's choice was: ${computerChoice}`);
+      determineWinner(userChoice, computerChoice);
     }
     alert(`Wins: ${wins}, Losses: ${losses}, Draws: ${draws}`);
-  } else {
-    alert(":(");
   }
 };
 
-RPS();
+playRPSGame();
