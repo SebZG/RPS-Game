@@ -1,8 +1,6 @@
 const RPS = () => {
-  let choices = ["R", "P", "S"]
-  let randomChoice = Math.floor(Math.random() * choices.length)
-  let computersChoice = choices[randomChoice]
-  let play = confirm("Do you want to play?")
+  let choices = ["R", "P", "S"];
+  let play = confirm("Do you want to play?");
   let draws = 0;
   let wins = 0;
   let losses = 0;
@@ -10,8 +8,10 @@ const RPS = () => {
 
   if (play === true) {
     while (num <= 10) {
-      num++
-      let rps = prompt("R, P, S ?")
+      num++;
+      let rps = prompt("R, P, S ?");
+      let randomChoice = Math.floor(Math.random() * choices.length);
+      let computersChoice = choices[randomChoice];
       if (rps === computersChoice) {
         draws++
       } else if (rps === "R" && computersChoice === "P") {
