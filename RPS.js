@@ -1,7 +1,6 @@
 const playRPSGame = () => {
   const choices = ["R", "P", "S"];
   const play = confirm("Do you want to play?");
-  const rounds = play ? prompt("How many rounds do you want to play?") : 0;
   let count = 0;
   let draws = 0;
   let wins = 0;
@@ -35,6 +34,7 @@ const playRPSGame = () => {
   }
 
   if (play) {
+    const rounds = play ? prompt("How many rounds do you want to play?") : 0;
     while (count < rounds) {
       count++
       const userChoice = prompt("R, P, S ?").toUpperCase();
