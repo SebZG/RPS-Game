@@ -1,8 +1,6 @@
 const RPS = () => {
-  let choices = ["R", "P", "S"]
-  let randomChoice = Math.floor(Math.random() * choices.length)
-  let computersChoice = choices[randomChoice]
-  let play = confirm("Do you want to play?")
+  let choices = ["R", "P", "S"];
+  let play = confirm("Do you want to play?");
   let draws = 0;
   let wins = 0;
   let losses = 0;
@@ -10,35 +8,29 @@ const RPS = () => {
 
   if (play === true) {
     while (num <= 10) {
-      num++
-      let rps = prompt("R, P, S ?")
+      num++;
+      let rps = prompt("R, P, S ?");
+      let randomChoice = Math.floor(Math.random() * choices.length);
+      let computersChoice = choices[randomChoice];
+      console.log("Your choice was: " + rps);
+      console.log("Computer's choice was: " + computersChoice);
       if (rps === computersChoice) {
-        draws++
-      } else if (rps === "R" && computersChoice === "P") {
-        alert("You lost!")
-        losses++
-      } else if (rps === "P" && computersChoice === "S") {
-        alert("You lost!")
-        losses++
-      } else if (rps === "S" && computersChoice === "R") {
-        alert("You lost!")
-        losses++
-      } else if (rps === "R" && computersChoice === "S") {
-        alert("You Won!")
-        wins++
-      } else if (rps === "S" && computersChoice === "P") {
-        alert("You Won!")
-        wins++
-      } else if (rps === "P" && computersChoice === "R") {
-        alert("You Won!")
-        wins++
+        draws++;
+      } else if ((rps === "R" && computersChoice === "P") || (rps === "P" && computersChoice === "S") || (rps === "S" && computersChoice === "R")) {
+        alert("You lost!");
+        losses++;
+      } else if ((rps === "R" && computersChoice === "S") || (rps === "S" && computersChoice === "P") || (rps === "P" && computersChoice === "R")) {
+        alert("You Won!");
+        wins++;
+      } else {
+        console.log("Invalid choice");
       }
     }
-  }
-  alert(`Wins: ${wins}, Losses: ${losses}, Draws: ${draws}`)
-  if (play === false) {
-    alert(":(")
-  }
-}
+    alert(`Wins: ${wins}, Losses: ${losses}, Draws: ${draws}`);
 
-RPS()
+  } else {
+    alert(":(");
+  }
+};
+
+RPS();
