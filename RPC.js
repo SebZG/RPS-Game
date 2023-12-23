@@ -15,32 +15,22 @@ const RPS = () => {
       console.log("Your choice was: " + rps);
       console.log("Computer's choice was: " + computersChoice);
       if (rps === computersChoice) {
-        draws++
-      } else if (rps === "R" && computersChoice === "P") {
-        alert("You lost!")
-        losses++
-      } else if (rps === "P" && computersChoice === "S") {
-        alert("You lost!")
-        losses++
-      } else if (rps === "S" && computersChoice === "R") {
-        alert("You lost!")
-        losses++
-      } else if (rps === "R" && computersChoice === "S") {
+        draws++;
+      } else if ((rps === "R" && computersChoice === "P") || (rps === "P" && computersChoice === "S") || (rps === "S" && computersChoice === "R")) {
+        alert("You lost!");
+        losses++;
+      } else if ((rps === "R" && computersChoice === "S") || (rps === "S" && computersChoice === "P") || (rps === "P" && computersChoice === "R")) {
         alert("You Won!")
-        wins++
-      } else if (rps === "S" && computersChoice === "P") {
-        alert("You Won!")
-        wins++
-      } else if (rps === "P" && computersChoice === "R") {
-        alert("You Won!")
-        wins++
+        wins++;
+      } else {
+        console.log("Invalid choice");
       }
     }
-  }
-  alert(`Wins: ${wins}, Losses: ${losses}, Draws: ${draws}`)
-  if (play === false) {
-    alert(":(")
-  }
-}
+    alert(`Wins: ${wins}, Losses: ${losses}, Draws: ${draws}`);
 
-RPS()
+  } else {
+    alert(":(");
+  }
+};
+
+RPS();
