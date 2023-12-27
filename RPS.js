@@ -32,12 +32,19 @@ const playRPSGame = () => {
   }
 
   if (play) {
-    const rounds = play ? prompt(`How many rounds do you want to play?`) : 0;
+    let rounds;
+    do {
+      rounds = prompt(`How many rounds do you want to play?`);
+      if (isNaN(rounds) || rounds <= 0) {
+        alert('Please enter a number greater than zero for the number of rounds you want to play.');
+      };
+    } while (isNaN(rounds) || rounds <= 0);
+
     while (count < rounds) {
-      let userChoice;
       do {
         userChoice = prompt(`R, P, S ?`).toUpperCase();
       } while (!choices.includes(userChoice));
+      
       const computerChoice = getRandomChoices();
       console.log(`Your choice was: ${userChoice}`);
       console.log(`Computer's choice was: ${computerChoice}`);
@@ -47,7 +54,6 @@ const playRPSGame = () => {
     }
     console.log(`Wins: ${wins}, Losses: ${losses}, Draws: ${draws}`);
     alert(`Wins: ${wins}, Losses: ${losses}, Draws: ${draws}`);
-  }
-};
-
-playRPSGame();
+  };
+}
+  playRPSGame();
