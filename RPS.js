@@ -42,18 +42,25 @@ const playRPSGame = () => {
 
     while (count < rounds) {
       do {
-        userChoice = prompt(`R, P, S ?`).toUpperCase();
-      } while (userChoice === null || !choices.includes(userChoice));
+        userChoice = prompt(`Please choose R, P or S.`);
 
-      const computerChoice = getRandomChoices();
-      console.log(`Your choice was: ${userChoice}`);
-      console.log(`Computer's choice was: ${computerChoice}`);
-      if (determineWinner(userChoice, computerChoice)) {
-        count++; // Only increment counts if input is valid
-      }
+        if (userChoice.toUpperCase() !== "R" && userChoice.toUpperCase() !== "P" && userChoice.toUpperCase() !== "S") {
+          alert('Please select R, P, or S.');
+        } else {
+
+          const computerChoice = getRandomChoices();
+          console.log(`Your choice was: ${userChoice}`);
+          console.log(`Computer's choice was: ${computerChoice}`);
+          if (determineWinner(userChoice.toUpperCase(), computerChoice)) {
+            count++; // Only increment counts if input is valid
+          }
+        }
+      } while (userChoice.toUpperCase() !== "R" && userChoice.toUpperCase() !== "P" && userChoice.toUpperCase() !== "S");
     }
     console.log(`Wins: ${wins}, Losses: ${losses}, Draws: ${draws}`);
     alert(`Wins: ${wins}, Losses: ${losses}, Draws: ${draws}`);
   };
 }
-  playRPSGame();
+playRPSGame();
+
+// .includes(userChoice.toUpperCase()))
