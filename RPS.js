@@ -43,8 +43,8 @@ const playRPSGame = () => {
     while (count < rounds) {
       do {
         userChoice = prompt(`R, P, S ?`).toUpperCase();
-      } while (!choices.includes(userChoice));
-      
+      } while (userChoice === null || !choices.includes(userChoice));
+
       const computerChoice = getRandomChoices();
       console.log(`Your choice was: ${userChoice}`);
       console.log(`Computer's choice was: ${computerChoice}`);
