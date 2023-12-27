@@ -35,14 +35,26 @@ const playRPSGame = () => {
     let rounds;
     do {
       rounds = prompt(`How many rounds do you want to play?`);
+      if (rounds === null) {
+        alert("Game canceled. Goodbye!");
+        return; // Exit the function
+      }
+
       if (isNaN(rounds) || rounds <= 0) {
-        alert('Please enter a number greater than zero for the number of rounds you want to play.');
-      };
+        alert(
+          "Please enter a number greater than zero for the number of rounds you want to play."
+        );
+      }
     } while (isNaN(rounds) || rounds <= 0);
 
     while (count < rounds) {
       do {
         userChoice = prompt(`Please choose R, P or S.`);
+
+        if (userChoice === null) {
+          alert("Game canceled. Goodbye!");
+          return; // Exit the function
+        }
 
         if (userChoice.toUpperCase() !== "R" && userChoice.toUpperCase() !== "P" && userChoice.toUpperCase() !== "S") {
           alert('Please select R, P, or S.');
@@ -61,6 +73,5 @@ const playRPSGame = () => {
     alert(`Wins: ${wins}, Losses: ${losses}, Draws: ${draws}`);
   };
 }
-playRPSGame();
 
-// .includes(userChoice.toUpperCase()))
+playRPSGame();
